@@ -15,7 +15,7 @@ export default function Home() {
 
   const fetchPost = async () => {
     setLoading(true);
-    const json = await (await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/allPages`, {
+    const json = await (await fetch(`https://wiki-client.vercel.app//allPages`, {
       headers: {
         'Content-Type': 'application/json',
       }
@@ -45,7 +45,7 @@ export default function Home() {
           <p>
             {titles.map((obj) => {
               return <>
-                <Link className="text-blue-600 hover:text-blue-800 active:text-purple-700 underline" href={`${process.env.NEXT_PUBLIC_BACKEND_URL}/wiki/${obj.title}`}>{obj.title?.replace(/_/g, " ")}</Link><br></br>
+                <Link className="text-blue-600 hover:text-blue-800 active:text-purple-700 underline" href={`https://wiki-client.vercel.app//wiki/${obj.title}`}>{obj.title?.replace(/_/g, " ")}</Link><br></br>
               </>
             })}
           </p>)}
