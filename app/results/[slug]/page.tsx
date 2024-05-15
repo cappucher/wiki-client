@@ -51,7 +51,7 @@ export default function Home({ params }: { params: { slug: string } }) {
           <p>
             {titles.map((obj) => {
               return <>
-                <Link className="text-blue-600 hover:text-blue-800 active:text-purple-700 underline" href={`http://localhost:3000/wiki/${obj.title}`}>{obj.title?.replace(/_/g, " ")}</Link><br></br>
+                <Link className="text-blue-600 hover:text-blue-800 active:text-purple-700 underline" href={`${process.env.NEXT_PUBLIC_BACKEND_URL}/wiki/${obj.title}`}>{obj.title?.replace(/_/g, " ")}</Link><br></br>
               </>
             })}
           </p>)}
