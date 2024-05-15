@@ -5,7 +5,6 @@ import { MainNav } from "@/components/ui/main-nav";
 import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
 import React from "react";
-import Markdown from 'react-markdown';
 
 export default function Home({ params }: { params: { slug: string } }) {
     const [data, setData] = React.useState({
@@ -20,7 +19,7 @@ export default function Home({ params }: { params: { slug: string } }) {
 
     const fetchPost = async () => {
         setLoading(true); // Set loading to true when fetching starts
-        const response = await fetch(`http://localhost:3030/wiki/${params.slug}`, {
+        const response = await fetch(`${process.env.BACKEND_URL}/wiki/${params.slug}`, {
             headers: {
                 'Content-Type': 'application/json',
             }

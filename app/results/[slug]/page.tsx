@@ -17,7 +17,7 @@ export default function Home({ params }: { params: { slug: string } }) {
 
   const fetchPost = async () => {
     setLoading(true);
-    const res = await (await fetch("http://localhost:3030/search", {
+    const res = await (await fetch(`${process.env.BACKEND_URL}/search`, {
       method: "POST",
       headers: {
         "Content-type": "application/json"

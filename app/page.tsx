@@ -15,7 +15,7 @@ export default function Home() {
 
   const fetchPost = async () => {
     setLoading(true);
-    const json = await (await fetch(`http://localhost:3030/`, {
+    const json = await (await fetch(`${process.env.BACKEND_URL}/`, {
       headers: {
         'Content-Type': 'application/json',
       }
