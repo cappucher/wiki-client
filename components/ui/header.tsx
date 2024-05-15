@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { MainNav } from "./main-nav"
+import React from "react"
 
 interface linkProps extends React.HTMLAttributes<HTMLElement> {
     link: number
