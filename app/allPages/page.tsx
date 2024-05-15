@@ -29,7 +29,7 @@ export default function Home() {
   }, [])
   return (
     <main className="">
-      <Header link={-1}/>
+      <Header link={2}/>
       <div className="mx-12 mt-10">
         <div className="flex items-center justify-between">
           <div className="space-y-1">

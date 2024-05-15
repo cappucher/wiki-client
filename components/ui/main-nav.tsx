@@ -51,6 +51,12 @@ export function MainNav({
       >
         All pages
       </Link>
+      <Link
+        href="https://docs.google.com/forms/d/e/1FAIpQLScRTXS-RjPKrmaRzovhiaOdBCZ-ONPUFyH_HBi0y3yLDWEtEg/viewform?usp=sf_link"
+        className={`text-sm font-medium ${link !== 3 ? "text-muted-foreground" : ""} transition-colors hover:text-primary`}
+      >
+        Feedback form
+      </Link>
       <Search />
 
     </nav>
