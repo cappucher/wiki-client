@@ -19,7 +19,7 @@ export default function Home({ params }: { params: { slug: string } }) {
 
     const fetchPost = async () => {
         setLoading(true); // Set loading to true when fetching starts
-        const response = await fetch(`${process.env.BACKEND_URL}/wiki/${params.slug}`, {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/wiki/${params.slug}`, {
             headers: {
                 'Content-Type': 'application/json',
             }

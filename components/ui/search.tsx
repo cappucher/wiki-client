@@ -22,7 +22,7 @@ export function Search() {
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    const res = await (await fetch(`${process.env.BACKEND_URL}/search`, {
+    const res = await (await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/search`, {
       method: "POST",
       headers: {
         "Content-type": "application/json"

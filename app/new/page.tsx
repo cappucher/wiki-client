@@ -36,7 +36,7 @@ export default function Home() {
     const [title, setTitle] = React.useState("");
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
-        await fetch(`${process.env.BACKEND_URL}/new`, {
+        await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/new`, {
             method: "POST",
             headers: {
                 "Content-type": "application/json"

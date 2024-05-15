@@ -15,10 +15,10 @@ export default function Home() {
 
   const fetchPost = async () => {
     setLoading(true);
-    const json = await (await fetch(`${process.env.BACKEND_URL}/`, {
+    const json = await (await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/`, {
       headers: {
         'Content-Type': 'application/json',
-      }
+      } 
     })).json();
     setTitles(json);
     setLoading(false); 

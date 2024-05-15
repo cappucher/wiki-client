@@ -17,7 +17,7 @@ export function MainNav({
   const [randomTitle, setRandomTitle] = React.useState("");
 
   const fetchPost = async () => {
-    const json = await (await fetch(`${process.env.BACKEND_URL}/random`, {
+    const json = await (await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/random`, {
       headers: {
         'Content-Type': 'application/json',
       }
