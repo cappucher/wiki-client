@@ -5,6 +5,7 @@ import { MainNav } from "@/components/ui/main-nav";
 import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
 import React from "react";
+import Markdown from 'markdown-to-jsx'
 
 export default function Home({ params }: { params: { slug: string } }) {
     const [data, setData] = React.useState({
@@ -55,7 +56,7 @@ export default function Home({ params }: { params: { slug: string } }) {
                     </div>
                     <Separator className="my-4" />
                     <p>
-                        {data.body}
+                        <Markdown>{data.body}</Markdown>
                     </p>
                 </div>
             )}
