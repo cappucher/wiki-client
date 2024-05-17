@@ -6,6 +6,7 @@ import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
 import React from "react";
 import Markdown from 'markdown-to-jsx'
+import MarkdownRenderer from "@/components/ui/renderer";
 
 export default function Home({ params }: { params: { slug: string } }) {
     const [data, setData] = React.useState({
@@ -40,6 +41,10 @@ export default function Home({ params }: { params: { slug: string } }) {
         fetchPost();
     }, [params.slug]);
 
+
+
+
+
     return (
         <main>
             <Header link={-1} />
@@ -56,7 +61,7 @@ export default function Home({ params }: { params: { slug: string } }) {
                     </div>
                     <Separator className="my-4" />
                     <p>
-                        <Markdown>{data.body}</Markdown>
+                        <MarkdownRenderer data={{ body: data.body }} />
                     </p>
                 </div>
             )}

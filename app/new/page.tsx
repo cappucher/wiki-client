@@ -18,6 +18,7 @@ import { useForm } from "react-hook-form"
 import { Textarea } from "@/components/ui/textarea";
 import { Separator } from "@/components/ui/separator";
 import React from "react";
+import axios from "axios";
 
 const formSchema = z.object({
     title: z.string().min(1).max(30),
@@ -36,13 +37,11 @@ export default function Home() {
     const [title, setTitle] = React.useState("");
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
-        await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/new`, {
+        console.log(values);
+        const response = await (await fetch('/api/admin/new', {
             method: "POST",
-            headers: {
-                "Content-type": "application/json"
-            },
             body: JSON.stringify(values)
-        })
+        })).json();
         setTitle(values.title.replace(/ /g, "_"));
         setSubmitted(true);
     }
