@@ -11,6 +11,8 @@ const formSchema = z.object({
   title: z.string()
 });
 
+const SECRET_TOKEN = process.env.NEXT_PUBLIC_SECRET;
+
 export function Search() {
   const router = useRouter();
 
@@ -24,8 +26,10 @@ export function Search() {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     const res = await (await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/search`, {
       method: "POST",
+      //@ts-ignore
       headers: {
-        "Content-type": "application/json"
+        "Content-type": "application/json",
+        'X-Admin-Token': SECRET_TOKEN
       },
       body: JSON.stringify(values)
     })).json();

@@ -10,6 +10,8 @@ import { Page } from "@/lib/types";
 import { Loading } from "@/components/ui/loading";
 import { Skeleton } from "@/components/ui/skeleton";
 
+const SECRET_TOKEN = process.env.NEXT_PUBLIC_SECRET;
+
 export default function Home({ params }: { params: { slug: string } }) {
   const [titles, setTitles] = React.useState<Page[]>([]);
   const [loading, setLoading] = React.useState(true); // Add loading state
@@ -19,8 +21,10 @@ export default function Home({ params }: { params: { slug: string } }) {
     setLoading(true);
     const res = await (await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/search`, {
       method: "POST",
+      //@ts-ignore
       headers: {
-        "Content-type": "application/json"
+        "Content-type": "application/json",
+        'X-Admin-Token': SECRET_TOKEN
       },
       body: JSON.stringify({
         title: params.slug

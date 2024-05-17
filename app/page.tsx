@@ -9,17 +9,23 @@ import React from "react";
 import { Page } from "@/lib/types";
 import { Skeleton } from "@/components/ui/skeleton";
 
+const SECRET_TOKEN = process.env.NEXT_PUBLIC_SECRET;
+
 export default function Home() {
   const [titles, setTitles] = React.useState<Page[]>([]);
   const [loading, setLoading] = React.useState(true); // Add loading state
 
   const fetchPost = async () => {
     setLoading(true);
-    const json = await (await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/`, {
+    const json = await (await fetch(`http://localhost:3030/`, {
+      //@ts-ignore
       headers: {
         'Content-Type': 'application/json',
+        'X-Admin-Token': SECRET_TOKEN
       } 
     })).json();
+    console.log("test");
+    console.log(json);
     setTitles(json);
     setLoading(false); 
 

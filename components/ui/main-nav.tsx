@@ -9,6 +9,8 @@ interface linkProps extends React.HTMLAttributes<HTMLElement> {
   link: number
 }
 
+const SECRET_TOKEN = process.env.NEXT_PUBLIC_SECRET;
+
 export function MainNav({
   className,
   link,
@@ -18,8 +20,10 @@ export function MainNav({
 
   const fetchPost = async () => {
     const json = await (await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/random`, {
+      //@ts-ignore
       headers: {
         'Content-Type': 'application/json',
+        'X-Admin-Token': SECRET_TOKEN
       }
     })).json();
     setRandomTitle(json.title);

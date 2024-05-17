@@ -8,6 +8,8 @@ import React from "react";
 import Markdown from 'markdown-to-jsx'
 import MarkdownRenderer from "@/components/ui/renderer";
 
+const SECRET_TOKEN = process.env.NEXT_PUBLIC_SECRET;
+
 export default function Home({ params }: { params: { slug: string } }) {
     const [data, setData] = React.useState({
         title: "",
@@ -22,8 +24,10 @@ export default function Home({ params }: { params: { slug: string } }) {
     const fetchPost = async () => {
         setLoading(true); // Set loading to true when fetching starts
         const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/wiki/${params.slug}`, {
+            //@ts-ignore
             headers: {
                 'Content-Type': 'application/json',
+                'X-Admin-Token': SECRET_TOKEN
             }
         });
         const json = await response.json();

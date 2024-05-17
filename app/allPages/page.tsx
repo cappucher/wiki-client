@@ -18,6 +18,7 @@ export default function Home() {
     const json = await (await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/allPages`, {
       headers: {
         'Content-Type': 'application/json',
+        
       }
     })).json();
     setTitles(json);

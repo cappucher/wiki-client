@@ -7,7 +7,7 @@ const SECRET_TOKEN = process.env.NEXT_PUBLIC_SECRET;
 export const POST = async (request: Request) => {
     try {
         const data = await request.json();
-        const response = await (await fetch('http://localhost:3030/new', {
+        const response = await (await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/new`, {
             method: "POST",
             // @ts-ignore
             headers: { 
@@ -22,7 +22,6 @@ export const POST = async (request: Request) => {
             { status: 200 }
         )
     } catch (error) {
-        console.log(error);
         return new NextResponse(
             JSON.stringify({ message: 'Failed to create page' }),
             { status: 500 }

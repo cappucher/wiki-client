@@ -37,7 +37,6 @@ export default function Home() {
     const [title, setTitle] = React.useState("");
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
-        console.log(values);
         const response = await (await fetch('/api/admin/new', {
             method: "POST",
             body: JSON.stringify(values)
