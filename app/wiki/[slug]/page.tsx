@@ -7,7 +7,7 @@ import Link from "next/link";
 import React from "react";
 import Markdown from 'markdown-to-jsx'
 import MarkdownRenderer from "@/components/ui/renderer";
-import { useRouter } from "next/router";
+import { useRouter } from 'next/navigation'
 
 const SECRET_TOKEN = process.env.NEXT_PUBLIC_SECRET;
 
@@ -34,6 +34,7 @@ export default function Home({ params }: { params: { slug: string } }) {
         });
         
         const json = await response.json();
+        console.log(json);
         if (json.message){
             router.push("/404");
             return;
