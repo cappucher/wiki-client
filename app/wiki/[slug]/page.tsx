@@ -7,6 +7,7 @@ import Link from "next/link";
 import React from "react";
 import Markdown from 'markdown-to-jsx'
 import MarkdownRenderer from "@/components/ui/renderer";
+import { useRouter } from "next/router";
 
 const SECRET_TOKEN = process.env.NEXT_PUBLIC_SECRET;
 
@@ -20,6 +21,7 @@ export default function Home({ params }: { params: { slug: string } }) {
     });
 
     const [loading, setLoading] = React.useState(true); // Add loading state
+    const router = useRouter();
 
     const fetchPost = async () => {
         setLoading(true); // Set loading to true when fetching starts
@@ -30,7 +32,12 @@ export default function Home({ params }: { params: { slug: string } }) {
                 'X-Admin-Token': SECRET_TOKEN
             }
         });
+        
         const json = await response.json();
+        if (json.message){
+            router.push("/404");
+            return;
+        }
         setData({
             title: json.title,
             body: json.body,

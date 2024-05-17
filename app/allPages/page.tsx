@@ -17,6 +17,7 @@ export default function Home() {
 
   const fetchPost = async () => {
     setLoading(true);
+    
     const json = await (await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/allPages`, {
       //@ts-ignore
       headers: {
