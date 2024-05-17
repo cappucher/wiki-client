@@ -84,7 +84,7 @@ export default function Home() {
                                         <Textarea placeholder="Insert title here..." {...field} />
                                     </FormControl>
                                     <FormDescription>
-                                        This will be the <u>MEAT</u> of the page. The minimum length for the body is 30 characters.
+                                        This will be the <u>MEAT</u> of the page. The minimum length for the body is 30 characters. <br></br>To create headers, use the syntax <code>## HeaderName</code>. For links, use the syntax <code>[Name of link](URL of link)</code>.
                                     </FormDescription>
                                     <FormMessage />
                                 </FormItem>

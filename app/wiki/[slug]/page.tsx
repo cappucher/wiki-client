@@ -8,6 +8,7 @@ import React from "react";
 import Markdown from 'markdown-to-jsx'
 import MarkdownRenderer from "@/components/ui/renderer";
 import { useRouter } from 'next/navigation'
+import { TypographyH1 } from "@/components/ui/TypographyComponents";
 
 const SECRET_TOKEN = process.env.NEXT_PUBLIC_SECRET;
 
@@ -58,17 +59,17 @@ export default function Home({ params }: { params: { slug: string } }) {
 
 
     return (
-        <main>
+        <>
             <Header link={-1} />
             {loading ? (
                 <Loading /> // Show loading component while loading is true
             ) : (
-                <div className="mx-12 mt-10">
+                <div className="mx-12 mt-10 body">
                     <div className="flex items-center justify-between">
                         <div className="space-y-1">
-                            <h1 className="text-4xl font-semibold tracking-tight">
+                        <TypographyH1>
                                 {data.title.replace(/_/g, " ")}
-                            </h1>
+                        </TypographyH1>
                         </div>
                     </div>
                     <Separator className="my-4" />
@@ -77,6 +78,6 @@ export default function Home({ params }: { params: { slug: string } }) {
                     </p>
                 </div>
             )}
-        </main>
+        </>
     );
 }

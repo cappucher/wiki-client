@@ -76,18 +76,77 @@
   }
 }
 
+.markdown h1 {
+  scroll-margin: 5rem !important;
+  font-size: 2.25rem !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.025em !important;
+}
+.markdown h1.lg\:text-5xl {
+  font-size: 3rem !important;
+}
+
+.markdown h2 {
+  scroll-margin: 5rem !important;
+  border-bottom: 1px solid !important;
+  border-color: hsl(var(--border)) !important;
+  padding-bottom: 0.5rem !important;
+  font-size: 1.875rem !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.025em !important;
+  margin-top: 0 !important;
+}
+
+.markdown h3 {
+  scroll-margin: 5rem !important;
+  font-size: 1.5rem !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.025em !important;
+}
+
+.markdown h4 {
+  scroll-margin: 5rem !important;
+  font-size: 1.25rem !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.025em !important;
+}
+
+.markdown p {
+  line-height: 1.75 !important;
+}
+.markdown p:not(:first-child) {
+  margin-top: 1.5rem !important;
+}
+
+.markdown blockquote {
+  margin-top: 1.5rem !important;
+  border-left: 2px solid !important;
+  padding-left: 1.5rem !important;
+  font-style: italic !important;
+}
+
+.markdown ul {
+  margin: 1.5rem 0 !important;
+  margin-left: 1.5rem !important;
+  list-style-type: disc !important;
+}
+.markdown ul > li {
+  margin-top: 0.5rem !important;
+}
+
+.markdown code {
+  position: relative !important;
+  border-radius: 0.25rem !important;
+  background-color: var(--muted) !important;
+  padding: 0.2rem 0.3rem !important;
+  font-family: monospace !important;
+  font-size: 0.875rem !important;
+  font-weight: 600 !important;
+}
+
 .markdown a {
-  --tw-text-opacity: 1;
-  color: rgb(37 99 235 / var(--tw-text-opacity)) !important;
-}
-
-.markdown a:hover {
-  --tw-text-opacity: 1;
-  color: rgb(30 64 175 / var(--tw-text-opacity)) !important;
-}
-
-.markdown a:active {
-  --tw-text-opacity: 1;
-  color: rgb(126 34 206 / var(--tw-text-opacity)) !important;
-  text-decoration-line: underline;
+  font-weight: 500 !important;
+  color: var(--primary) !important;
+  text-decoration: underline !important;
+  text-underline-offset: 0.25rem !important;
 }
