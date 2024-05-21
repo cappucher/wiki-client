@@ -26,16 +26,15 @@ export default function Home({ params }: { params: { slug: string } }) {
 
     const fetchPost = async () => {
         setLoading(true); // Set loading to true when fetching starts
-        const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/wiki/${params.slug}`, {
+        const response = await fetch(`/api/admin/wiki`, {
+            method: "POST",
             //@ts-ignore
-            headers: {
-                'Content-Type': 'application/json',
-                'X-Admin-Token': SECRET_TOKEN
-            }
+            body: JSON.stringify({
+                page: params.slug
+            })
         });
         
         const json = await response.json();
-        console.log(json);
         if (json.message){
             router.push("/404");
             return;

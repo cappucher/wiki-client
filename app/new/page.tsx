@@ -97,7 +97,7 @@ export default function Home() {
                     <p
                         className="text-muted-foreground mt-2"
                     >
-                        Your page has sucessfully been created. It can be found at <Link className="text-blue-600 hover:text-blue-800 active:text-purple-700 underline" href={`https://wiki-client.vercel.app/wiki/${title}`}>{`https://wiki-client.vercel.app/wiki/${title}`}</Link>.
+                        Your page has sucessfully been created. It can be found at <Link className="text-blue-600 hover:text-blue-800 active:text-purple-700 underline" href={`/wiki/${title}`}>{`https://wiki-client.vercel.app/wiki/${title}`}</Link>.
                     </p>
                 </div>
             </div>

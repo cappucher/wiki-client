@@ -24,14 +24,12 @@ export function Search() {
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    const res = await (await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/search`, {
+    const res = await (await fetch(`/api/admin/search`, {
       method: "POST",
       //@ts-ignore
-      headers: {
-        "Content-type": "application/json",
-        'X-Admin-Token': SECRET_TOKEN
-      },
-      body: JSON.stringify(values)
+      body: JSON.stringify({
+        title: values.title
+      })
     })).json();
     if (!res) {
       router.push(`/wiki/${values.title.replace(/ /g, "_")}`);

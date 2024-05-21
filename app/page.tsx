@@ -17,18 +17,9 @@ export default function Home() {
 
   const fetchPost = async () => {
     setLoading(true);
-    const json = await (await fetch(`http://localhost:3030/`, {
-      //@ts-ignore
-      headers: {
-        'Content-Type': 'application/json',
-        'X-Admin-Token': SECRET_TOKEN
-      } 
-    })).json();
-    console.log("test");
-    console.log(json);
+    const json = await (await fetch('/api/admin/')).json();
     setTitles(json);
     setLoading(false); 
-
   }
 
   React.useEffect(() => {
@@ -52,7 +43,7 @@ export default function Home() {
           <p>
             {titles.map((obj) => {
               return <>
-                <Link className="text-blue-600 hover:text-blue-800 active:text-purple-700 underline" href={`https://wiki-client.vercel.app/wiki/${obj.title}`}>{obj.title?.replace(/_/g, " ")}</Link><br></br>
+                <Link className="text-blue-600 hover:text-blue-800 active:text-purple-700 underline" href={`/wiki/${obj.title}`}>{obj.title?.replace(/_/g, " ")}</Link><br></br>
               </>
             })}
           </p>)}

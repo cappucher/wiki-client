@@ -17,16 +17,9 @@ export default function Home() {
 
   const fetchPost = async () => {
     setLoading(true);
-    
-    const json = await (await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/allPages`, {
-      //@ts-ignore
-      headers: {
-        'Content-Type': 'application/json',
-        'X-Admin-Token': SECRET_TOKEN 
-      }
-    })).json();
+    const json = await (await fetch('/api/admin/allPages')).json();
     setTitles(json);
-    setLoading(false); 
+    setLoading(false);
   }
 
   React.useEffect(() => {
@@ -34,7 +27,7 @@ export default function Home() {
   }, [])
   return (
     <main className="">
-      <Header link={2}/>
+      <Header link={2} />
       <div className="mx-12 mt-10">
         <div className="flex items-center justify-between">
           <div className="space-y-1">
@@ -50,7 +43,7 @@ export default function Home() {
           <p>
             {titles.map((obj) => {
               return <>
-                <Link className="text-blue-600 hover:text-blue-800 active:text-purple-700 underline" href={`https://wiki-client.vercel.app/wiki/${obj.title}`}>{obj.title?.replace(/_/g, " ")}</Link><br></br>
+                <Link className="text-blue-600 hover:text-blue-800 active:text-purple-700 underline" href={`/wiki/${obj.title}`}>{obj.title?.replace(/_/g, " ")}</Link><br></br>
               </>
             })}
           </p>)}

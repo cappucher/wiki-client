@@ -10,8 +10,6 @@ import { Page } from "@/lib/types";
 import { Loading } from "@/components/ui/loading";
 import { Skeleton } from "@/components/ui/skeleton";
 
-const SECRET_TOKEN = process.env.NEXT_PUBLIC_SECRET;
-
 export default function Home({ params }: { params: { slug: string } }) {
   const [titles, setTitles] = React.useState<Page[]>([]);
   const [loading, setLoading] = React.useState(true); // Add loading state
@@ -19,18 +17,13 @@ export default function Home({ params }: { params: { slug: string } }) {
 
   const fetchPost = async () => {
     setLoading(true);
-    const res = await (await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/search`, {
+    const response = await (await fetch('/api/admin/search', {
       method: "POST",
-      //@ts-ignore
-      headers: {
-        "Content-type": "application/json",
-        'X-Admin-Token': SECRET_TOKEN
-      },
       body: JSON.stringify({
         title: params.slug
       })
     })).json();
-    setTitles(res);
+    setTitles(response);
     setLoading(false);
   }
 
@@ -55,7 +48,7 @@ export default function Home({ params }: { params: { slug: string } }) {
           <p>
             {titles.map((obj) => {
               return <>
-                <Link className="text-blue-600 hover:text-blue-800 active:text-purple-700 underline" href={`https://wiki-client.vercel.app/wiki/${obj.title}`}>{obj.title?.replace(/_/g, " ")}</Link><br></br>
+                <Link className="text-blue-600 hover:text-blue-800 active:text-purple-700 underline" href={`/wiki/${obj.title}`}>{obj.title?.replace(/_/g, " ")}</Link><br></br>
               </>
             })}
           </p>)}
