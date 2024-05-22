@@ -9,7 +9,6 @@ import React from "react";
 import { Page } from "@/lib/types";
 import { Skeleton } from "@/components/ui/skeleton";
 
-const SECRET_TOKEN = process.env.NEXT_PUBLIC_SECRET;
 
 export default function Home() {
   const [titles, setTitles] = React.useState<Page[]>([]);

@@ -20,3 +20,7 @@ After a friend suggested to me this "social experiment", I started coding over t
 ### Version 1.1.1: May 20, 2024
 
 I implemented a form of authentication in order to make requests to my backend. Developers must provide a secret key in order to make requests; at the moment, I am the only individual who has access to said key.
+
+### Version 1.2.0: May 21, 2024
+
+A profanity filter was added for titles and error messages were added.

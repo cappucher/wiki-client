@@ -35,12 +35,20 @@ export default function Home() {
     });
     const [submitted, setSubmitted] = React.useState(false);
     const [title, setTitle] = React.useState("");
+    const [message, setMessage] = React.useState("");
+    const [profane, setProfane] = React.useState(false);
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
-        const response = await (await fetch('/api/admin/new', {
+        const response = await fetch('/api/admin/new', {
             method: "POST",
             body: JSON.stringify(values)
-        })).json();
+        })
+        const responseJson = await response.json();
+        if (response.status >= 400)
+        {
+            setMessage(responseJson.message);
+            setProfane(true);
+        }
         setTitle(values.title.replace(/ /g, "_"));
         setSubmitted(true);
     }
@@ -95,9 +103,14 @@ export default function Home() {
                 </Form>
                 <div className={!submitted ? "invisible" : ""}>
                     <p
-                        className="text-muted-foreground mt-2"
+                        className={`${profane ? "invisible" : ""} text-muted-foreground mt-2`}
                     >
                         Your page has sucessfully been created. It can be found at <Link className="text-blue-600 hover:text-blue-800 active:text-purple-700 underline" href={`/wiki/${title}`}>{`https://wiki-client.vercel.app/wiki/${title}`}</Link>.
+                    </p>
+                    <p 
+                        className = {`text-destructive ${!profane ? "invisible" : ""}`}
+                    >
+                        {message}
                     </p>
                 </div>
             </div>
