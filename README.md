@@ -24,3 +24,7 @@ I implemented a form of authentication in order to make requests to my backend. 
 ### Version 1.2.0: May 21, 2024
 
 A profanity filter was added for titles and error messages were added.
+
+### Version 1.2.1: May 22, 2024
+
+A bug regarding the posts that would show up (generally that were removed would show up or added wouldn't show up) has been fixed.
