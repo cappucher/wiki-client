@@ -32,7 +32,7 @@ export default function Home() {
         <div className="flex items-center justify-between">
           <div className="space-y-1">
             <h1 className="text-3xl font-semibold tracking-tight">
-              Here are all the pages of all time.
+              Here are all of the pages of all time.
             </h1>
           </div>
         </div>

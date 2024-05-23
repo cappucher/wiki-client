@@ -44,10 +44,12 @@ export default function Home() {
             body: JSON.stringify(values)
         })
         const responseJson = await response.json();
-        if (response.status >= 400)
+        if (response.status === 400 || response.status === 409)
         {
             setMessage(responseJson.message);
             setProfane(true);
+        } else {
+            setProfane(false);
         }
         setTitle(values.title.replace(/ /g, "_"));
         setSubmitted(true);

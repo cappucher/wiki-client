@@ -1,8 +1,10 @@
+import { revalidatePath } from 'next/cache';
 import { NextRequest, NextResponse } from 'next/server';
 
 const SECRET_TOKEN = process.env.NEXT_PUBLIC_SECRET;
 
 export const POST = async (request: NextRequest) => {
+    revalidatePath(request.url);
     try {
         const json = await request.json();
         const response = await (await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/wiki/${json.page}`, {
